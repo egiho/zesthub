@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Database\Seeders\IncomeSeeder;
+use Database\Seeders\ProductTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         DB::table('item_tag')->truncate();
         DB::table('categories')->truncate();
         DB::table('items')->truncate();
-        DB::table('incomes')->truncate();
+        DB::table('products')->truncate();
 
         $this->call([RolesTableSeeder::class, UsersTableSeeder::class]);
         $this->call([TagsTableSeeder::class, CategoriesTableSeeder::class, ItemsTableSeeder::class]);
-        $this->call([IncomeSeeder::class]);
+        $this->call([ProductTableSeeder::class]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }

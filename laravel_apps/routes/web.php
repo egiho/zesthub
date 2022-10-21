@@ -11,7 +11,7 @@
 |
 */
 
-use App\Http\Controllers\SimpleFinance\IncomeController;
+use App\Http\Controllers\SimpleFinance\ProductController;
 
 Route::get('/', function () {
   return redirect('login');
@@ -27,21 +27,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
-    Route::prefix('income')->group(function () {
-        Route::get("/", [IncomeController::class, "index"])->name("page.income");
-        Route::get("add", [IncomeController::class, "add"])->name("page.income.add");
-        Route::post("add", [IncomeController::class, "create"])->name("page.income.add.post");
-        Route::get("add-ajax", [IncomeController::class, "addAjax"])->name("page.income.addAjax.get");
-        Route::post("add-ajax", [IncomeController::class, "addAjax"])->name("page.income.addAjax.post");
-        Route::post("edit", [IncomeController::class, "edit"])->name("page.income.edit.post");
-        Route::post("edit-ajax", [IncomeController::class, "editAjax"])->name("page.income.editAjax.post");
-        Route::get("graph", [IncomeController::class, "graph"])->name("page.income.graph");
-        Route::get("data-table", [IncomeController::class, "dataTable"])->name("page.income.dataTable");
-        Route::get("data-table/edit", [IncomeController::class, "dataTableEdit"])->name("page.income.dataTable.edit");
-        Route::post("data-table/edit", [IncomeController::class, "dataTableEdit"])->name("post.page.income.dataTable.edit");
-        // Route::get("data-table/delete", [IncomeController::class, "dataTableDelete"])->name("page.income.dataTable.delete");
-        Route::delete("data-table/delete", [IncomeController::class, "dataTableDelete"])->name("delete.page.income.dataTable.delete");
+
+Route::prefix('products')->group(function () {
+    Route::get("/", [ProductController::class, "index"])->name("page.products");
+    Route::get("/", [ProductController::class, "create"])->name("page.products");
+    Route::post("/", [ProductController::class, "save"])->name("page.products");
+    Route::get("/", [ProductController::class, "edit"])->name("page.products");
+    Route::put("/", [ProductController::class, "update"])->name("page.products");
+    Route::delete("/", [ProductController::class, "destroy"])->name("page.products");
     });
 });
+
 
 

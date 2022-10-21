@@ -50,21 +50,21 @@
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'widgets' ? ' active' : '' }} ">
-        <a class="nav-link" href="{{ route('page.income') }}">
-          <i class="material-icons">menu_open</i>
+        <a class="nav-link" href="{{ route('page.products') }}">
+          <i class="material-icons">shopping_cart_checkout</i>
           <p> Product </p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'charts' ? ' active' : '' }} ">
         <a class="nav-link" href="#">
           <i class="material-icons">double_arrow</i>
-          <p> Outcomes </p>
+          <p> Promo </p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'calendar' ? ' active' : '' }} ">
         <a class="nav-link" href="#">
           <i class="material-icons">date_range</i>
-          <p> Categories </p>
+          <p> Customer </p>
         </a>
       </li>
     </ul>
